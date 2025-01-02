@@ -1,12 +1,15 @@
 package cn.itcast.hotel;
 
 import org.apache.http.HttpHost;
+import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.GetIndexRequest;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -55,6 +58,8 @@ class HotelDemoApplicationTests {
         boolean exists = restHighLevelClient.indices().exists(request, RequestOptions.DEFAULT);
         System.out.println(exists?"索引库已经存在":"索引库不存在");
     }
+
+
 
 
 
