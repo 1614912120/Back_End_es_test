@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/hotel")
@@ -19,5 +21,15 @@ public class HotelController {
     @PostMapping("/list")
     public PageResult search(@RequestBody RequestParams params) throws IOException {
         return hotelService.search(params);
+    }
+
+    @PostMapping("filters")
+    public Map<String, List<String>> getFilter(@RequestBody RequestParams params) throws IOException {
+        return hotelService.getFilters(params);
+    }
+
+    @GetMapping("suggestion")
+    public List<String> getSuggestions(@RequestParam("key") String prefix) {
+        return hotelService.getSuggestions(prefix);
     }
 }
